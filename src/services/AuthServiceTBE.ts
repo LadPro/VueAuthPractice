@@ -43,6 +43,7 @@ class AuthServiceTBE {
         }
         catch(error){
             console.log(error)
+            this.error.value = "error en el catch"
             return false
         }
         }

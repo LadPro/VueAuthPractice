@@ -3,7 +3,7 @@
         <form>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" v-model="email">
+                <input type="input" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" v-model="email">
                 <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
             </div>
             <div class="mb-3">
@@ -11,7 +11,7 @@
                 <input type="password" class="form-control" id="exampleInputPassword1" v-model="password">
             </div>
     
-            <button type="submit" class="btn btn-primary" @click="login(email, password)">Login</button>
+            <button type="submit" class="btn btn-primary" @click.prevent="login()">Login</button>
     
         </form>
     </div>
@@ -21,13 +21,13 @@
     import { ref, Ref } from "vue";
     import AuthServiceTBE from "@/services/AuthServiceTBE"
 
-    const email = ref("")
-    const password = ref("")
-    const auth = new AuthServiceTBE
+    let email = ref("")
+    let password = ref("")
     let jwt:Ref<string> = ref("")
-
-    const login = async (email:string, password:string) =>{
-        let response = await auth.login(email, password)
+        
+        const login = async () =>{
+            const auth = new AuthServiceTBE
+            const response = await auth.login(email.value, password.value)
         
         if (await response){
             jwt = auth.getToken()
