@@ -11,7 +11,7 @@
                 <input type="password" class="form-control" id="exampleInputPassword1" v-model="password">
             </div>
     
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" @click="login(email, password)">Login</button>
     
         </form>
     </div>
@@ -19,9 +19,26 @@
 
 <script lang="ts" setup>
     import { ref, Ref } from "vue";
-    let email = ref("")
-    let password = ref("")
+    import AuthServiceTBE from "@/services/AuthServiceTBE"
 
+    const email = ref("")
+    const password = ref("")
+    const auth = new AuthServiceTBE
+    let jwt:Ref<string> = ref("")
+
+    const login = async (email:string, password:string) =>{
+        let response = await auth.login(email, password)
+        
+        if (await response){
+            jwt = auth.getToken()
+        }
+        else{
+            jwt = auth.getError()
+        }
+        
+        console.log(await jwt)
+    }
+    
 </script>
 
 <style scoped>
