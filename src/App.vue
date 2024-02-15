@@ -1,7 +1,8 @@
 <template>
   <nav>
     <router-link :to="{name:'home'}">Home</router-link> |
-    <router-link :to="{name:'auth'}">About</router-link>
+    <router-link :to="{name:'auth'}">Backend</router-link> |
+    <router-link :to="{name:'firebase'}">Firebase</router-link>
   </nav>
   <router-view/>
 </template>
