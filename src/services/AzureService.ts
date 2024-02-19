@@ -1,9 +1,11 @@
+import {ref, Ref} from "vue"
+
 class AzureService {
-    private msalConfig 
-    private accessToken
+    private msalConfig:Ref<xxxxx>
+    private accessToken:Ref<string>
 
     constructor() {
-        this.msalConfig = {
+        this.msalConfig = ref({
             auth: {
                 clientId: "xx",
                 authority: "xx"
@@ -11,16 +13,21 @@ class AzureService {
             cache: {
                 cacheLocation: "localStorage"
             },
-        }
-        this.accessToken= ''
+        })
+        this.accessToken= ref('')
     }
 
-    setAccessToken(token) {
-        this.accessToken = token
+    setAccessToken(token:string):Ref<string> {
+        this.accessToken.value = token
         return this.accessToken
     }
 
-    getAccessToken(){
+    getAccessToken():Ref<string>{
         return this.accessToken
+    }
+    getMsalConfig():Ref<yyyy>{
+        return this.msalConfig
     }
 }
+
+export default AzureService
