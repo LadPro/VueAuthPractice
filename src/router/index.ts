@@ -3,6 +3,8 @@ import HomeView from '../views/HomeView.vue'
 import AuthView from '../views/AuthView.vue'
 import FirebaseView from '../views/FirebaseView.vue'
 import SocialauthView from '../views/SocialauthView.vue'
+import AWSView from '../views/AWSView.vue'
+import AzureView from '../views/AzureView.vue'
 
 
 const routes: Array<RouteRecordRaw> = [
@@ -25,6 +27,16 @@ const routes: Array<RouteRecordRaw> = [
     path: '/social',
     name: 'social',
     component: SocialauthView
+  },
+  {
+    path: '/aws',
+    name: 'aws',
+    component: AWSView
+  },
+  {
+    path: '/azure',
+    name: 'azure',
+    component: AzureView
   },
 
 ]

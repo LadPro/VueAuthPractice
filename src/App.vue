@@ -3,7 +3,9 @@
     <router-link :to="{name:'home'}">Home</router-link> |
     <router-link :to="{name:'auth'}">Backend</router-link> |
     <router-link :to="{name:'firebase'}">Firebase</router-link> |
-    <router-link :to="{name:'social'}">Social</router-link>
+    <router-link :to="{name:'social'}">Social</router-link> |
+    <router-link :to="{name:'aws'}">AWS</router-link> |
+    <router-link :to="{name:'azure'}">Azure</router-link>
   </nav>
   <router-view/>
 </template>
