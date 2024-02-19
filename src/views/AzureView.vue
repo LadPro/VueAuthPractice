@@ -1,6 +1,7 @@
 <template>
     <div>
         <h1>Login con Azure</h1>
+        <button class="btn btn-primary" @click="login()">GitHub</button>
     </div>
 </template>
 
@@ -9,7 +10,7 @@
     import { onMounted } from 'vue';
     import AzureService from '@/services/AzureService';
 
-    const account = ""
+    let account = ""
     
     onMounted(()=>{
         const azureService = new AzureService()
@@ -17,7 +18,7 @@
     })
     
     const login = async () => {
-        await $msalInstace
+        await $msalInstance
             .loginPopup({})
             .then(()=>{
                 const myAccount = $msalInstance.getAllAccount()
