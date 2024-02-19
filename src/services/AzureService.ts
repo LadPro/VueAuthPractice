@@ -8,8 +8,8 @@ class AzureService {
     constructor() {
         this.msalConfig = ref({
             auth: {
-                clientId: "xx",
-                authority: "xx"
+                clientId: process.env.VUE_APP_AZURE_CLIENT_KEY,
+                authority: `http://login.microsoftonline.com/${process.env.VUE_APP_AZURE_TENET_ID}/oauth2/authorize`
             },
             cache: {
                 cacheLocation: "localStorage"
