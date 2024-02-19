@@ -10,24 +10,24 @@
     import AzureService from '@/services/AzureService';
 
     const account = ""
-
-    onMounted(async()=>{
+    
+    onMounted(()=>{
         const azureService = new AzureService()
         $msalInstance = new PublicClientApplication(azureService.getMsalConfig().value)
     })
-
+    
     const login = async () => {
         await $msalInstace
-        .loginPopup({})
-        .then(()=>{
-            const myAccount = $msalInstance.getAllAccount()
-            account = myAccount[0]
-            $emitter.emit('login', account)
+            .loginPopup({})
+            .then(()=>{
+                const myAccount = $msalInstance.getAllAccount()
+                account = myAccount[0]
+                $emitter.emit('login', account)
 
-        })
-        .cath(error =>{
-            alert ("error" + error)
-        })
+            })
+            .cath(error =>{
+                alert ("error" + error)
+            })
     }
 
 

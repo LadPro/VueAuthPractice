@@ -1,7 +1,8 @@
 import {ref, Ref} from "vue"
+import IMsalConfig from "@/Interfaces/IMsalConfig"
 
 class AzureService {
-    private msalConfig:Ref<xxxxx>
+    private msalConfig:Ref<IMsalConfig>
     private accessToken:Ref<string>
 
     constructor() {
@@ -25,7 +26,7 @@ class AzureService {
     getAccessToken():Ref<string>{
         return this.accessToken
     }
-    getMsalConfig():Ref<yyyy>{
+    getMsalConfig():Ref<IMsalConfig>{
         return this.msalConfig
     }
 }
