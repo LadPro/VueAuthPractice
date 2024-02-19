@@ -26,6 +26,6 @@ const analytics = getAnalytics(appFirebase);
 const app = createApp(App)                  //// para firebase
 
 app.config.globalProperties.$msalInstance = {}   //// para azure
-app.config.globalProperties.$emitter = new Emitter()
+app.config.globalProperties.$emitter = new Emitter.TinyEmitter()
 
 app.use(router).mount('#app')
