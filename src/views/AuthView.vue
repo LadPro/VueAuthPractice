@@ -15,6 +15,7 @@
             <button type="submit" class="btn btn-primary" @click.prevent="login()">Login</button>
     
         </form>
+        <h1>{{ jwt }}</h1>
     </div>
 </template>
 
@@ -22,22 +23,26 @@
     import { ref, Ref } from "vue";
     import AuthServiceTBE from "@/services/AuthServiceTBE"
 
+
     let email = ref("")
     let password = ref("")
     let jwt:Ref<string> = ref("")
-        
+
+
         const login = async () =>{
-            const auth = new AuthServiceTBE
+            const auth = new AuthServiceTBE()
             const response = await auth.login(email.value, password.value)
+            console.log(response)
         
-        if (await response){
+        if (response){
             jwt = auth.getToken()
+
         }
         else{
             jwt = auth.getError()
         }
         
-        console.log(await jwt)
+        console.log(jwt.value)
     }
     
 </script>

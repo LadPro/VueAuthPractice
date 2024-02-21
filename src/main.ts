@@ -9,6 +9,11 @@ import { getAnalytics } from "firebase/analytics";
 
 import Emitter from "tiny-emitter"
 
+import Vue from 'vue'
+import  VueCookies  from 'vue-cookies'
+
+
+
 const firebaseConfig = {
     apiKey: process.env.VUE_APP_FB_API_KEY,
     authDomain: "auth-vue-16374.firebaseapp.com",
@@ -28,4 +33,15 @@ const app = createApp(App)                  //// para firebase
 app.config.globalProperties.$msalInstance = {}   //// para azure
 app.config.globalProperties.$emitter = new Emitter.TinyEmitter()
 
-app.use(router).mount('#app')
+
+
+app.use(router).use(VueCookies, {expires: '1d'}).mount('#app')
+
+
+//cookies
+//$cookies.set('nombre', valor, expires, path, domain, secure, sameSite)
+//$cookies.set('auth',1000)
+//$cookies.get('nombre') //devuelve valor
+//$cookies.remove('nombre')
+//$cookies.isKey('nombre') // ver si esiste
+//$cookies.keys()
