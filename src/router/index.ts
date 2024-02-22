@@ -36,7 +36,11 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/azure',
     name: 'azure',
-    component: AzureView
+    component: AzureView,
+    meta:{
+      requireAuth: true,
+      NeedRole: 'admin'
+    }
   },
 
 ]
