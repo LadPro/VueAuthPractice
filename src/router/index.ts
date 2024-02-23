@@ -45,9 +45,24 @@ const routes: Array<RouteRecordRaw> = [
 
 ]
 
+
+
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
+})
+
+router.beforeEach((to, from, next)=>{
+  const auth = false
+  const needAuth = to.meta.requireAuth
+  const role = 'admina'
+  const needRole = to.meta.NeedRole
+
+  if(needAuth && !auth && role == needRole){
+    next('login')
+  }else{
+    next()
+  }
 })
 
 export default router
